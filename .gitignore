@@ -1,4 +1,6 @@
 .idea
 selenium-server-4.2.2.jar
 jenkins.war
+geckodriver.exe
+geckodriver.log
 venv
