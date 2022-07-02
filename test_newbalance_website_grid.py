@@ -6,16 +6,15 @@ from selenium.webdriver.chrome.service import Service as ChromeService
 from selenium.webdriver.firefox.options import Options as FireFoxOptions
 from selenium.webdriver.firefox.service import Service as FirefoxService
 
+from selenium.webdriver.chrome.options import Options as ChromeOptions
+
 
 @pytest.fixture()
 def driver():
-    firefox_driver_binary = "./drivers/geckodriver"
+    firefox_driver_binary = "geckodriver.exe"
     ser_firefox = FirefoxService(firefox_driver_binary)
     firefox_options = FireFoxOptions()
-
-    brave_path = "/usr/bin/brave-browser"
-    options = webdriver.ChromeOptions()
-    options.binary_location = brave_path
+    chrome_options = ChromeOptions()
 
     browser_name = 'firefox'
     # if isinstance(browserName,list):
@@ -31,14 +30,10 @@ def driver():
         }
         driver = webdriver.Remote("http://localhost:4444", desired_capabilities=dc, options=firefox_options)
 
-    elif browser_name == "brave":
-        dc = {
-            "browserName": "chrome",
-            "platformName": "Windows 11"
-        }
-        driver = webdriver.Remote("http://localhost:4444", desired_capabilities=dc, options=options)
-
     elif browser_name == "chrome":
+        chrome_options.add_argument("--headless")  # browser doesnt open when run the test
+        chrome_options.add_argument("--disable-gpu")  # kartes msa5
+
         dc = {
             "browserName": "chrome",
             "platformName": "Windows 11"
