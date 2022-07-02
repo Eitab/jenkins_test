@@ -34,7 +34,6 @@ def driver():
         # chrome_options.add_argument("--headless")  # browser doesnt open when run the test
         # chrome_options.add_argument("--disable-gpu")  # kartes msa5
 
-
         dc = {
             "browserName": "chrome",
             "platformName": "Windows 11"
@@ -51,6 +50,8 @@ def driver():
         # firefox_options.set_preference("general.useragent.override", "Nexus 7")
 
         driver = webdriver.Firefox(service=ser_firefox, options=firefox_options)
+
+
 
     elif browser_name == "android-emulator":
         dc = {
@@ -85,4 +86,3 @@ def test_title(driver):
     driver.get("https://www.google.com/")
     title = driver.title
     assert title == "Google"
-
