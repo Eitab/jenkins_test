@@ -22,7 +22,7 @@ def driver():
     if browser_name == "firefox-webdriver":
         driver = webdriver.Firefox(service=ser_firefox)
     elif browser_name == "firefox":
-        firefox_options.add_argument("--headless")
+        # firefox_options.add_argument("--headless")
         dc = {
             "browserName": "firefox",
             # "browserVersion": "101.0.1(x64)",
@@ -31,8 +31,9 @@ def driver():
         driver = webdriver.Remote("http://localhost:4444", desired_capabilities=dc, options=firefox_options)
 
     elif browser_name == "chrome":
-        chrome_options.add_argument("--headless")  # browser doesnt open when run the test
-        chrome_options.add_argument("--disable-gpu")  # kartes msa5
+        # chrome_options.add_argument("--headless")  # browser doesnt open when run the test
+        # chrome_options.add_argument("--disable-gpu")  # kartes msa5
+
 
         dc = {
             "browserName": "chrome",
@@ -83,6 +84,5 @@ def driver():
 def test_title(driver):
     driver.get("https://www.google.com/")
     title = driver.title
-    driver.save_screenshot("Google_title_screenshoot.png")
     assert title == "Google"
 
