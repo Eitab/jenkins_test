@@ -80,7 +80,10 @@ def driver():
     driver.close()
 
 
+
 def test_title(driver):
     driver.get("https://www.google.com/")
     title = driver.title
     assert title == "Google"
+
+
