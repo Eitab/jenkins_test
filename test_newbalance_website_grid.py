@@ -51,8 +51,6 @@ def driver():
 
         driver = webdriver.Firefox(service=ser_firefox, options=firefox_options)
 
-
-
     elif browser_name == "android-emulator":
         dc = {
             "platformName": "Android",
