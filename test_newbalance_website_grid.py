@@ -22,7 +22,8 @@ def driver():
     if browser_name == "firefox-webdriver":
         driver = webdriver.Firefox(service=ser_firefox)
     elif browser_name == "firefox":
-        # firefox_options.add_argument("--headless")
+        firefox_options.add_argument("--headless")  #with the browser doesnt open
+
         dc = {
             "browserName": "firefox",
             # "browserVersion": "101.0.1(x64)",
@@ -80,12 +81,10 @@ def driver():
     driver.close()
 
 
-
-
-
 def test_title(driver):
     driver.get("https://www.google.com/")
     title = driver.title
+    #driver.save_screenshot("Google_title_screenshoot.png")
     assert title == "Google"
 
 
