@@ -4,3 +4,4 @@ jenkins.war
 geckodriver.exe
 geckodriver.log
 venv
+ngrok.exe
